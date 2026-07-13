@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Louli OS">
+<title>Louli OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>#lock{position:fixed;inset:0;background:#1b1026;color:#fff;display:flex;align-items:center;justify-content:center;z-index:99999}.card{text-align:center}.dots{letter-spacing:8px;font-size:24px}.keypad{display:grid;grid-template-columns:repeat(3,70px);gap:10px;justify-content:center;margin-top:20px}.keypad button{height:60px;border-radius:16px;font-size:20px}body.locked>*:not(#lock){display:none!important}</style></head>
+<body class="locked"><div id='lock'><div class='card'><h2>Louli OS</h2><p>Enter PIN</p><div id='dots' class='dots'>○ ○ ○ ○</div><div id='err' style='color:#ffb3c7;height:20px'></div><div class='keypad'><button onclick="k('1')">1</button><button onclick="k('2')">2</button><button onclick="k('3')">3</button><button onclick="k('4')">4</button><button onclick="k('5')">5</button><button onclick="k('6')">6</button><button onclick="k('7')">7</button><button onclick="k('8')">8</button><button onclick="k('9')">9</button><button onclick="k('←')">←</button><button onclick="k('0')">0</button><button onclick="k('✓')">✓</button></div></div></div>
+<div id="stars"></div>
+<div id="statusbar"></div>
+<div id="screen"></div>
+<div id="overlay"></div>
+<script src="js/seed.js"></script>
+<script src="js/content-baked.js"></script>
+<script src="js/config.js"></script>
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+<script src="js/sheifo.js"></script>
+<script src="js/doctor.js"></script>
+<script src="js/life.js"></script>
+<script src="js/admin.js"></script>
+<script>let pin='',C='1812';function upd(){document.getElementById('dots').textContent=('● '.repeat(pin.length)+'○ '.repeat(4-pin.length)).trim()}function k(v){if(v==='←'){pin=pin.slice(0,-1);upd();return;}if(v==='✓'){if(pin===C){document.body.classList.remove('locked');document.getElementById('lock').remove()}else{document.getElementById('err').textContent='Incorrect PIN';pin='';upd()}return;}if(pin.length<4){pin+=v;upd();if(pin.length===4)k('✓')}}</script></body>
+</html>
